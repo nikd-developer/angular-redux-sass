@@ -22,13 +22,12 @@ export class LoaderComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.store.subscribe(() => this.updateState());
-        this.updateState();
     }
 
     updateState() {
         const state = this.store.getState();
         const loader = getLoader(state);
-        if(loader && !this.show) {
+        if(loader >= 1) {
             this.show = true;
         } else {
             this.show = false;

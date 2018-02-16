@@ -3,12 +3,12 @@ import * as UiActions from '../actions/ui.actions';
 import { createSelector } from 'reselect';
 
 export interface UiState {
-    loader: boolean;
+    loader: number;
     sidebar: boolean;
 }
 
 const initialState: UiState = {
-    loader: false,
+    loader: 0,
     sidebar: true
 }
 
@@ -16,11 +16,11 @@ export const UiReducer = (state: UiState = initialState, action: Action): UiStat
     switch (action.type) {
         case UiActions.SHOW_LOADER:
             return {
-                ...state, loader: true
+                ...state, loader: state.loader +1
             };
         case UiActions.HIDE_LOADER:
             return {
-                ...state, loader: false
+                ...state, loader: state.loader -1
             };
         case UiActions.SHOW_SIDEBAR:
             return {

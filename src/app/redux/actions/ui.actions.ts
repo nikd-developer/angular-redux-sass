@@ -24,7 +24,7 @@ export const showSidebar: ActionCreator<Action>  =
     type: SHOW_SIDEBAR
 })
 
-export const hideSIDEBAR: ActionCreator<Action>  = 
+export const hideSidebar: ActionCreator<Action>  = 
 (loader) => ({
     type: HIDE_SIDEBAR
 })
