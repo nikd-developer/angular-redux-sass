@@ -1,10 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { Router, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
-import { AppState, getCurrentUser } from './redux/app.reducer';
+import { AppState } from './redux/app.reducer';
 import * as Redux from 'redux';
 import { AppStore } from './redux/app.store';
-import * as UserActions  from './redux/actions/user.actions';
-import { LoaderService } from './core/_components/loader/loader.service';
+import * as UiActions from './redux/actions/ui.actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,40 +12,26 @@ import { LoaderService } from './core/_components/loader/loader.service';
 export class AppComponent {
   constructor(
     @Inject(AppStore) private store: Redux.Store<AppState>,
-    private router: Router,
-    private loaderService: LoaderService
+    private router: Router
   ) {
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
-    });
-
-    // redux Example
-    // store.subscribe(() => this.updateState() );
-    // this.updateState();
-    // store.dispatch(UserActions.setCurrentUser({
-    //   id: '123',
-    //   name: 'abc'
-    // }));
-  }
-
-  updateState() {
-    const state = this.store.getState();
-    console.log(getCurrentUser(state));
+    });    
   }
 
   navigationInterceptor(event: RouterEvent): void {
     if (event instanceof NavigationStart) {
-      this.loaderService.showLoader();
+      this.store.dispatch(UiActions.showLoader());
     }
     if (event instanceof NavigationEnd) {
-      this.loaderService.hideLoader();
+      this.store.dispatch(UiActions.hideLoader());
     }
   
     if (event instanceof NavigationCancel) {
-      this.loaderService.hideLoader();
+      this.store.dispatch(UiActions.hideLoader());
     }
     if (event instanceof NavigationError) {
-      this.loaderService.hideLoader();
+      this.store.dispatch(UiActions.hideLoader());
     }
   }
 

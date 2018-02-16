@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { LoaderComponent } from './loader/loader.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -26,13 +27,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     // Shared Components
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoaderComponent
     
   ],
   declarations: [
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoaderComponent
   ],
   providers: [
     
