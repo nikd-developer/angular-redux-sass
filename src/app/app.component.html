@@ -1,8 +1,10 @@
-<div>
-<app-modal-manager></app-modal-manager>
 <app-loader></app-loader>
-<div app-header></div>
 <div app-sidebar></div>
-<router-outlet></router-outlet>
+
+<div app-header></div>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
 <div app-footer></div>
-</div>
+
+<app-modal-manager></app-modal-manager>
